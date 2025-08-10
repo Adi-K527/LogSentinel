@@ -1,7 +1,7 @@
 from kafka.admin import KafkaAdminClient, NewTopic
 
 admin_client = KafkaAdminClient(
-    bootstrap_servers="54.166.188.31:9092", 
+    bootstrap_servers="3.93.192.251:9092", 
     client_id='test'
 )
 
