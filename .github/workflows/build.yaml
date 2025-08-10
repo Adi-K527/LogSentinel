@@ -34,7 +34,7 @@ jobs:
             IMAGE_TAG: ${{ github.sha }}
         run: |
             docker build \
-                -t $ECR_REGISTRY/logsentinel-repo:consumer1-$IMAGE_TAG \
+                -t 206479108282.dkr.ecr.us-east-1.amazonaws.com/logsentinel-repo:consumer1-$IMAGE_TAG \
                 ./consumer \
                 --build-arg KAFKA_TOPIC=user-service-logs-topic \
                 --build-arg DB_URI="${{ secrets.DB_URI }}" \
@@ -44,11 +44,11 @@ jobs:
                 --build-arg AWS_SECRET_ACCESS_KEY="${{ secrets.AWS_SECRET_ACCESS_KEY }}" \
                 --build-arg SNS_ARN="${{ secrets.SNS_ARN }}"
 
-            docker push $ECR_REGISTRY/logsentinel-repo:consumer1-$IMAGE_TAG
-            echo "image=$ECR_REGISTRY/logsentinel-repo:consumer1-$IMAGE_TAG" >> $GITHUB_OUTPUT
+            docker push 206479108282.dkr.ecr.us-east-1.amazonaws.com/logsentinel-repo:consumer1-$IMAGE_TAG
+            echo "image=206479108282.dkr.ecr.us-east-1.amazonaws.com/logsentinel-repo:consumer1-$IMAGE_TAG" >> $GITHUB_OUTPUT
 
             docker build \
-                -t $ECR_REGISTRY/logsentinel-repo:consumer2-$IMAGE_TAG \
+                -t 206479108282.dkr.ecr.us-east-1.amazonaws.com/logsentinel-repo:consumer2-$IMAGE_TAG \
                 ./consumer \
                 --build-arg KAFKA_TOPIC=pic-service-logs-topic \
                 --build-arg DB_URI="${{ secrets.DB_URI }}" \
@@ -58,11 +58,11 @@ jobs:
                 --build-arg AWS_SECRET_ACCESS_KEY="${{ secrets.AWS_SECRET_ACCESS_KEY }}" \
                 --build-arg SNS_ARN="${{ secrets.SNS_ARN }}"
 
-            docker push $ECR_REGISTRY/logsentinel-repo:consumer2-$IMAGE_TAG
-            echo "image=$ECR_REGISTRY/logsentinel-repo:consumer2-$IMAGE_TAG" >> $GITHUB_OUTPUT
+            docker push 206479108282.dkr.ecr.us-east-1.amazonaws.com/logsentinel-repo:consumer2-$IMAGE_TAG
+            echo "image=206479108282.dkr.ecr.us-east-1.amazonaws.com/logsentinel-repo:consumer2-$IMAGE_TAG" >> $GITHUB_OUTPUT
 
             docker build \
-                -t $ECR_REGISTRY/logsentinel-repo:consumer3-$IMAGE_TAG \
+                -t 206479108282.dkr.ecr.us-east-1.amazonaws.com/logsentinel-repo:consumer3-$IMAGE_TAG \
                 ./consumer \
                 --build-arg KAFKA_TOPIC=pic-service-logs-topic \
                 --build-arg DB_URI="${{ secrets.DB_URI }}" \
@@ -72,11 +72,11 @@ jobs:
                 --build-arg AWS_SECRET_ACCESS_KEY="${{ secrets.AWS_SECRET_ACCESS_KEY }}" \
                 --build-arg SNS_ARN="${{ secrets.SNS_ARN }}"
 
-            docker push $ECR_REGISTRY/logsentinel-repo:consumer3-$IMAGE_TAG
-            echo "image=$ECR_REGISTRY/logsentinel-repo:consumer3-$IMAGE_TAG" >> $GITHUB_OUTPUT
+            docker push 206479108282.dkr.ecr.us-east-1.amazonaws.com/logsentinel-repo:consumer3-$IMAGE_TAG
+            echo "image=206479108282.dkr.ecr.us-east-1.amazonaws.com/logsentinel-repo:consumer3-$IMAGE_TAG" >> $GITHUB_OUTPUT
 
             docker build \
-                -t $ECR_REGISTRY/logsentinel-repo:consumer4-$IMAGE_TAG \
+                -t 206479108282.dkr.ecr.us-east-1.amazonaws.com/logsentinel-repo:consumer4-$IMAGE_TAG \
                 ./consumer \
                 --build-arg KAFKA_TOPIC=pic-service-logs-topic \
                 --build-arg DB_URI="${{ secrets.DB_URI }}" \
@@ -86,5 +86,5 @@ jobs:
                 --build-arg AWS_SECRET_ACCESS_KEY="${{ secrets.AWS_SECRET_ACCESS_KEY }}" \
                 --build-arg SNS_ARN="${{ secrets.SNS_ARN }}"
 
-            docker push $ECR_REGISTRY/logsentinel-repo:consumer4-$IMAGE_TAG
-            echo "image=$ECR_REGISTRY/logsentinel-repo:consumer4-$IMAGE_TAG" >> $GITHUB_OUTPUT
+            docker push 206479108282.dkr.ecr.us-east-1.amazonaws.com/logsentinel-repo:consumer4-$IMAGE_TAG
+            echo "image=206479108282.dkr.ecr.us-east-1.amazonaws.com/logsentinel-repo:consumer4-$IMAGE_TAG" >> $GITHUB_OUTPUT
