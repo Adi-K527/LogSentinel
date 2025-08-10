@@ -23,8 +23,8 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@0e613a0980cbf65ed5b322eb7a1e075d28913a83
         with:
-          aws-access-key-id: ${{ secrets.ACCESS_KEY }}
-          aws-secret-access-key: ${{ secrets.SECRET_ACCESS_KEY }}
+          aws-access-key-id: ${{ env.ACCESS_KEY }}
+          aws-secret-access-key: ${{ env.SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
       - name: Login to Amazon ECR
@@ -37,16 +37,30 @@ jobs:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          CONSUMERS=("consumer1" "consumer2" "consumer3" "consumer4")
+          USER_CONSUMERS=("consumer1" "consumer2")
 
-          for CONSUMER in ${CONSUMERS[@]}; do
+          for CONSUMER in ${USER_CONSUMERS[@]}; do
             docker build -t 206479108282.dkr.ecr.us-east-1.amazonaws.com/logsentinel-repo:$IMAGE_TAG ./consumer \
                   --build-arg KAFKA_TOPIC=user-service-logs-topic \
                   --build-arg DB_URI=${{ secrets.DB_URI }} \
-                  --build-arg IP_ADDRESS=${{ secrets.IP_ADDRESS }} \
+                  --build-arg IP_ADDRESS="3.93.192.251" \
                   --build-arg OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }} \
-                --build-arg AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} \
-                --build-arg AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} \
-                --build-arg SNS_ARN=${{ secrets.SNS_ARN }}
+                  --build-arg AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} \
+                  --build-arg AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} \
+                  --build-arg SNS_ARN=${{ secrets.SNS_ARN }}
             docker push 206479108282.dkr.ecr.us-east-1.amazonaws.com/logsentinel-repo:${CONSUMER}-$IMAGE_TAG
             echo "image=206479108282.dkr.ecr.us-east-1.amazonaws.com/logsentinel-repo:${CONSUMER}-$IMAGE_TAG" >> $GITHUB_OUTPUT
+
+            PIC_CONSUMERS=("consumer3" "consumer4")
+
+            for CONSUMER in ${PIC_CONSUMERS[@]}; do
+                docker build -t 206479108282.dkr.ecr.us-east-1.amazonaws.com/logsentinel-repo:$IMAGE_TAG ./consumer \
+                  --build-arg KAFKA_TOPIC=pic-service-logs-topic \
+                  --build-arg DB_URI=${{ secrets.DB_URI }} \
+                  --build-arg IP_ADDRESS="3.93.192.251" \
+                  --build-arg OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }} \
+                  --build-arg AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} \
+                  --build-arg AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} \
+                  --build-arg SNS_ARN=${{ secrets.SNS_ARN }}
+                docker push 206479108282.dkr.ecr.us-east-1.amazonaws.com/logsentinel-repo:${CONSUMER}-$IMAGE_TAG
+                echo "image=206479108282.dkr.ecr.us-east-1.amazonaws.com/logsentinel-repo:${CONSUMER}-$IMAGE_TAG" >> $GITHUB_OUTPUT
