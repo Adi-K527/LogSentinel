@@ -50,6 +50,7 @@ jobs:
                   --build-arg SNS_ARN=${{ secrets.SNS_ARN }}
             docker push 206479108282.dkr.ecr.us-east-1.amazonaws.com/logsentinel-repo:${CONSUMER}-$IMAGE_TAG
             echo "image=206479108282.dkr.ecr.us-east-1.amazonaws.com/logsentinel-repo:${CONSUMER}-$IMAGE_TAG" >> $GITHUB_OUTPUT
+          done
 
           PIC_CONSUMERS=("consumer3" "consumer4")
 
@@ -64,3 +65,4 @@ jobs:
                   --build-arg SNS_ARN=${{ secrets.SNS_ARN }}
             docker push 206479108282.dkr.ecr.us-east-1.amazonaws.com/logsentinel-repo:${CONSUMER}-$IMAGE_TAG
             echo "image=206479108282.dkr.ecr.us-east-1.amazonaws.com/logsentinel-repo:${CONSUMER}-$IMAGE_TAG" >> $GITHUB_OUTPUT
+          done
