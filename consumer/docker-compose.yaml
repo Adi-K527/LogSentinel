@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  user-consumer-1:
+    image: 206479108282.dkr.ecr.us-east-1.amazonaws.com/logsentinel-repo:consumer1-6c6658b3cacabcb3c0bba00b3d7d3657f2f02ce6
+    container_name: user-consumer-1
+
+  user-consumer-2:
+    image: 206479108282.dkr.ecr.us-east-1.amazonaws.com/logsentinel-repo:consumer1-6c6658b3cacabcb3c0bba00b3d7d3657f2f02ce6
+    container_name: user-consumer-2
+
+  pic-consumer-1:
+    image: 206479108282.dkr.ecr.us-east-1.amazonaws.com/logsentinel-repo:consumer2-6c6658b3cacabcb3c0bba00b3d7d3657f2f02ce6
+    container_name: pic-consumer-1
+
+  pic-consumer-2:
+    image: 206479108282.dkr.ecr.us-east-1.amazonaws.com/logsentinel-repo:consumer2-6c6658b3cacabcb3c0bba00b3d7d3657f2f02ce6
+    container_name: pic-consumer-2

@@ -1,13 +1,8 @@
 # ---------- IMPORT LIBRARIES ---------- #
 from kafka.consumer import KafkaConsumer
-import json
 import dotenv
 import os
 from langgraph.graph import StateGraph, START, END
-from langgraph.prebuilt import create_react_agent
-from langgraph.prebuilt import ToolNode
-from langgraph.checkpoint.memory import MemorySaver
-from langgraph.graph.message import add_messages
 from pydantic import BaseModel
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate

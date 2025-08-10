@@ -3,7 +3,7 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - main
+      - abc
 
 env:
   ACCESS_KEY:          ${{ secrets.AWS_ACCESS_KEY_ID }}
