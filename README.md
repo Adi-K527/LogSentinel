@@ -1,7 +1,7 @@
 # LogSentinel
 ---
 
-In this project, I aimed to build an agentic workflow to evaluate application logs and send notiifcations in case of errors or events requiring action. This workflow consisted of 2 producers being seperate microservices in my PicRater project, sending logs to a kafka broker. These logs were then consumed by 4 seperate containerized LangGraph workflows. The LangGraph workflows would process the logs and store a timestamped summary and general evaluation of the logs into a PostgreSQL database, and sent notifications for any events that required attention.
+In this project, I aimed to build an agentic workflow to evaluate application logs and send notiifcations in case of errors or events requiring action. This workflow consisted of 2 producers being seperate microservices in my [PicRater](https://github.com/Adi-K527/PicRater) project, sending logs to a kafka broker. These logs were then consumed by 4 seperate containerized LangGraph workflows. The LangGraph workflows would process the logs and store a timestamped summary and general evaluation of the logs into a PostgreSQL database, and sent notifications for any events that required attention.
 
 </br></br>
 ### High Level Architecture
