@@ -35,4 +35,4 @@ The consumer polls the Kafka cluster for a period of 2 seconds and passes the ba
 </br></br>
 ### Conclusion
 ---
-Overall, this project served to offer fundamental, hands-on experience with Kafka and agentic AI development by applying them to a industry relavent use case.
+Overall, this project served to offer fundamental hands-on experience with Kafka and agentic AI development by applying them to a industry relavent use case.
